@@ -1,0 +1,69 @@
+{
+  "stable": true,
+  "versions": {
+    "1.0.0": {
+      "creationDate": "2026-07-30T08:14:35.000Z",
+      "manifest": {
+        "id": "io.github.orcvole.prosody",
+        "title": "Prosody (XMPP)",
+        "author": "OrcVole",
+        "description": "Prosody is a modern XMPP communication server. It aims to be easy to set up and configure, and efficient with system resources.\n\nThis package gives you a private chat and calls server where **every account is one of your existing Cloudron users** (via the LDAP addon). JIDs are simply `user@<app-domain>` — no apex-domain certificate and no mandatory SRV records.\n\n**Features**\n\n* 1:1 chat, group chat (MUC), multi-device sync, message history (MAM), file/image sharing (XEP-0363), and 1:1 audio/video calls.\n* Real certificates on the XMPP ports from the Cloudron TLS addon; calls work through NAT via the Cloudron TURN addon, including TURN-over-TLS.\n* Server-to-server federation, with the group-chat component getting its own trusted certificate as a Cloudron app alias.\n* Works with standard clients: Conversations (Android), Gajim, Dino, Kaidan (desktop), and others.\n* End-to-end encryption (OMEMO/OTR/PGP) encouraged but optional, for the widest client compatibility.\n* SQLite storage in Cloudron's backed-up data volume.\n\nProsody is a backend service — configure it with an XMPP client, not a browser.",
+        "changelog": "[1.0.0]\n* Initial release: Prosody 13.0.6 (official stable apt package) for Cloudron.\n* Cloudron accounts as XMPP accounts via the LDAP addon — no separate user database.\n* Real certificates from the Cloudron TLS addon on 5222/5223/5269 (simple-JID design: the app domain is the XMPP host, so no apex-domain certificate is needed).\n* Audio/video calls via the Cloudron TURN addon (XEP-0215), including TURN-over-TLS for restrictive networks.\n* Multi-user chat on `conference.<domain>` as a Cloudron app alias with its own trusted certificate — federation verified against public servers.\n* HTTP file upload (XEP-0363) on the main host; message archive (MAM), carbons, stream management, push notifications, BOSH and WebSocket.\n* SQLite storage in Cloudron's backed-up data volume.\n* Health check reports real server status (mod_host_status_check routed via http_default_host).",
+        "tagline": "Self-hosted chat and calls over XMPP",
+        "version": "1.0.0",
+        "upstreamVersion": "13.0.6",
+        "manifestVersion": 2,
+        "minBoxVersion": "9.1.0",
+        "healthCheckPath": "/host_status_check",
+        "httpPort": 5280,
+        "tcpPorts": {
+          "C2S_PORT": {
+            "title": "XMPP c2s (STARTTLS)",
+            "description": "Client-to-server port",
+            "defaultValue": 5222,
+            "containerPort": 5222
+          },
+          "C2S_DIRECT_TLS_PORT": {
+            "title": "XMPP c2s (direct TLS)",
+            "description": "Client-to-server legacy/direct-TLS port (XEP-0368)",
+            "defaultValue": 5223,
+            "containerPort": 5223
+          },
+          "S2S_PORT": {
+            "title": "XMPP s2s",
+            "description": "Server-to-server federation port",
+            "defaultValue": 5269,
+            "containerPort": 5269
+          }
+        },
+        "addons": {
+          "localstorage": {},
+          "tls": {},
+          "ldap": {},
+          "turn": {}
+        },
+        "multiDomain": true,
+        "memoryLimit": 536870912,
+        "website": "https://prosody.im/",
+        "documentationUrl": "https://prosody.im/doc/",
+        "packagerName": "OrcVole",
+        "packagerUrl": "https://github.com/OrcVole/prosody-cloudron",
+        "contactEmail": "Most+github@OrcadianVole.com",
+        "icon": "file://icon.png",
+        "iconUrl": "https://raw.githubusercontent.com/OrcVole/prosody-cloudron/main/icon.png",
+        "mediaLinks": [
+          "https://raw.githubusercontent.com/OrcVole/prosody-cloudron/main/icon.png"
+        ],
+        "tags": [
+          "chat",
+          "xmpp",
+          "messaging"
+        ],
+        "postInstallMessage": "## Prosody is running 🎉\n\n**Logging in**\n\n- Point an XMPP client (Conversations on Android, Gajim/Dino/Kaidan on desktop) at your domain.\n- Your JID is `user@$CLOUDRON-APP-FQDN` — log in with your **Cloudron username (or email) and password**.\n- If login fails as if the password were wrong, enable **SASL PLAIN / \"allow cleartext auth\"** in your\n  client. This is safe here: the connection always requires TLS first.\n- Prosody is a backend service — there is no web UI to open in a browser.\n\n**Group chat (recommended)**\n\nAdd the multi-user chat component as an app alias so it gets its own trusted certificate:\n\n```\ncloudron configure --app $CLOUDRON-APP-FQDN --alias-domains conference.$CLOUDRON-APP-FQDN\n```\n\nOn a Cloudron-managed DNS zone this creates the DNS record and provisions the certificate automatically.\n\n**Federation and calls — check your provider firewall**\n\nCloudron's own firewall opens the app's ports, but if your server sits behind a cloud\nsecurity group or provider firewall, these must be reachable from the internet:\n\n- **5222, 5223, 5269 (TCP)** — client and server-to-server XMPP.\n- **3478 and 5349 (TCP+UDP)** plus the **TURN relay range (UDP, 50000–51000 by default)** — required\n  for audio/video calls through NAT.\n\n**Optional DNS SRV records** (not required — the JID domain is the connect host on standard\nports — but they help other servers and clients discover yours):\n\n```\n_xmpp-client._tcp.$CLOUDRON-APP-FQDN.            300 IN SRV 0 5 5222 $CLOUDRON-APP-FQDN.\n_xmpps-client._tcp.$CLOUDRON-APP-FQDN.           300 IN SRV 0 5 5223 $CLOUDRON-APP-FQDN.\n_xmpp-server._tcp.$CLOUDRON-APP-FQDN.            300 IN SRV 0 5 5269 $CLOUDRON-APP-FQDN.\n_xmpp-server._tcp.conference.$CLOUDRON-APP-FQDN. 300 IN SRV 0 5 5269 $CLOUDRON-APP-FQDN.\n```\n\nProject homepage: https://prosody.im — Package: https://github.com/OrcVole/prosody-cloudron",
+        "dockerImage": "ghcr.io/orcvole/prosody-cloudron@sha256:b5c17e7ee6d374cf90e9bde63b21e1eda797b6da8bbcb4cdbc4cc61eb1b5c37d"
+      },
+      "publishState": "published",
+      "ts": 1785399275077
+    }
+  }
+}

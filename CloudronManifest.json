@@ -46,6 +46,7 @@
   "contactEmail": "Most+github@OrcadianVole.com",
   "icon": "file://icon.png",
   "iconUrl": "https://raw.githubusercontent.com/OrcVole/prosody-cloudron/main/icon.png",
+  "mediaLinks": [ "https://raw.githubusercontent.com/OrcVole/prosody-cloudron/main/icon.png" ],
   "tags": [ "chat", "xmpp", "messaging" ],
   "postInstallMessage": "file://POSTINSTALL.md"
 }
