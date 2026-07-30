@@ -1,0 +1,51 @@
+{
+  "id": "io.github.orcvole.prosody",
+  "title": "Prosody (XMPP)",
+  "author": "OrcVole",
+  "description": "file://DESCRIPTION.md",
+  "changelog": "file://CHANGELOG.md",
+  "tagline": "Self-hosted chat and calls over XMPP",
+  "version": "1.0.0",
+  "upstreamVersion": "13.0.6",
+  "manifestVersion": 2,
+  "minBoxVersion": "9.1.0",
+  "healthCheckPath": "/host_status_check",
+  "httpPort": 5280,
+  "tcpPorts": {
+    "C2S_PORT": {
+      "title": "XMPP c2s (STARTTLS)",
+      "description": "Client-to-server port",
+      "defaultValue": 5222,
+      "containerPort": 5222
+    },
+    "C2S_DIRECT_TLS_PORT": {
+      "title": "XMPP c2s (direct TLS)",
+      "description": "Client-to-server legacy/direct-TLS port (XEP-0368)",
+      "defaultValue": 5223,
+      "containerPort": 5223
+    },
+    "S2S_PORT": {
+      "title": "XMPP s2s",
+      "description": "Server-to-server federation port",
+      "defaultValue": 5269,
+      "containerPort": 5269
+    }
+  },
+  "addons": {
+    "localstorage": {},
+    "tls": {},
+    "ldap": {},
+    "turn": {}
+  },
+  "multiDomain": true,
+  "memoryLimit": 536870912,
+  "website": "https://prosody.im/",
+  "documentationUrl": "https://prosody.im/doc/",
+  "packagerName": "OrcVole",
+  "packagerUrl": "https://github.com/OrcVole/prosody-cloudron",
+  "contactEmail": "Most+github@OrcadianVole.com",
+  "icon": "file://icon.png",
+  "iconUrl": "https://raw.githubusercontent.com/OrcVole/prosody-cloudron/main/icon.png",
+  "tags": [ "chat", "xmpp", "messaging" ],
+  "postInstallMessage": "file://POSTINSTALL.md"
+}

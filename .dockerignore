@@ -1,0 +1,6 @@
+.git
+*.md
+!DESCRIPTION.md
+!POSTINSTALL.md
+!CHANGELOG.md
+tests/
