@@ -60,6 +60,12 @@ service; configure it with an XMPP client.
 - `start.sh`, `cloudron-env.bash`, `cloudron-cert-setup.bash` — wire the Cloudron
   `ldap`/`tls`/`turn` addons into Prosody at each start.
 
+## For Prosody developers
+
+Packaging Prosody for a managed platform surfaced a handful of places where upstream
+docs or small features would help the next packager — collected in
+[docs/notes-for-prosody-developers.md](docs/notes-for-prosody-developers.md).
+
 ## Credits
 
 Forked from [DerekJarvis/cloudron-prosody](https://github.com/DerekJarvis/cloudron-prosody),
