@@ -1,0 +1,12 @@
+data/*
+tests/certs/
+tests/venv/
+tests/__pycache__/
+
+# Secret hygiene — never commit tokens/credentials/certs
+.env
+*.token
+*.secret
+.cloudron*
+*.pem
+*.key
