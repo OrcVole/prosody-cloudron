@@ -10,3 +10,6 @@ tests/__pycache__/
 .cloudron*
 *.pem
 *.key
+
+# The anonymity denylist names what must never be published, so it is never published itself.
+.anonymize-list
