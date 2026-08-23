@@ -37,4 +37,4 @@ _xmpp-server._tcp.$CLOUDRON-APP-FQDN.            300 IN SRV 0 5 5269 $CLOUDRON-A
 _xmpp-server._tcp.conference.$CLOUDRON-APP-FQDN. 300 IN SRV 0 5 5269 $CLOUDRON-APP-FQDN.
 ```
 
-Project homepage: https://prosody.im — Package: https://github.com/OrcVole/prosody-cloudron
+Project homepage: <https://prosody.im> — Package: <https://github.com/OrcVole/prosody-cloudron>
