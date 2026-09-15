@@ -1,4 +1,4 @@
-`<upstream>`13.0.6</upstream>
+`<upstream>13.0.6</upstream>
 
 Prosody is a modern XMPP communication server. It aims to be easy to set up and configure, and efficient with system resources.
 
