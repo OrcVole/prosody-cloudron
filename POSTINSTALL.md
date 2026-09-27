@@ -12,7 +12,7 @@
 
 Add the multi-user chat component as an app alias so it gets its own trusted certificate:
 
-```
+```bash
 cloudron configure --app $CLOUDRON-APP-FQDN --alias-domains conference.$CLOUDRON-APP-FQDN
 ```
 
@@ -30,7 +30,7 @@ security group or provider firewall, these must be reachable from the internet:
 **Optional DNS SRV records** (not required — the JID domain is the connect host on standard
 ports — but they help other servers and clients discover yours):
 
-```
+```text
 _xmpp-client._tcp.$CLOUDRON-APP-FQDN.            300 IN SRV 0 5 5222 $CLOUDRON-APP-FQDN.
 _xmpps-client._tcp.$CLOUDRON-APP-FQDN.           300 IN SRV 0 5 5223 $CLOUDRON-APP-FQDN.
 _xmpp-server._tcp.$CLOUDRON-APP-FQDN.            300 IN SRV 0 5 5269 $CLOUDRON-APP-FQDN.
