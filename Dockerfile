@@ -1,17 +1,17 @@
 # Prosody XMPP for Cloudron — Prosody 13.0 from the official apt repo.
 # Forked from github.com/DerekJarvis/cloudron-prosody (itself a fork of
 # SaraSmiseth/prosody). Reworked for: Prosody 13.0 (apt, not source build),
-# Debian FHS paths, Lua 5.4, CMD-only (no ENTRYPOINT), simple-JID + Cloudron
+# Debian FHS paths, Lua 5.4 (re-verified on base 6), CMD-only (no ENTRYPOINT), simple-JID + Cloudron
 # tls/ldap/turn addons.
 
-FROM docker.io/cloudron/base:5.0.0@sha256:04fd70dbd8ad6149c19de39e35718e024417c3e01dc9c6637eaf4a41ec4e596c
+FROM docker.io/cloudron/base:6.0.0@sha256:9bed4c8fa880645f8e669041ee28febe941481d00e9445e3e5a5483cb541d09b
 
 # Prosody STABLE point release, pinned exactly. The `prosody` package is the
-# stable line (currently 13.0.6); the `prosody-13.0` package is *nightly* builds
+# stable line (currently 13.0.7); the `prosody-13.0` package is *nightly* builds
 # of the 13.0 branch, which we deliberately avoid. Bump this pin to move versions.
-ARG PROSODY_VERSION=13.0.6-1~noble1
-# Distro codename of the base image above (cloudron/base:5.0.0 = Ubuntu noble).
-ARG DISTRO=noble
+ARG PROSODY_VERSION=13.0.7-1~resolute2
+# Distro codename of the base image above (cloudron/base:6.0.0 = Ubuntu 26.04 resolute).
+ARG DISTRO=resolute
 
 LABEL org.opencontainers.image.title="prosody-cloudron"
 LABEL org.opencontainers.image.description="Prosody 13.0 XMPP server packaged for Cloudron (LDAP, TURN, file upload, MUC)."

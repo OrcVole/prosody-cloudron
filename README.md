@@ -12,7 +12,7 @@ chat and calls server where every account is one of your existing Cloudron users
   `conference.<domain>` gets its own certificate as a Cloudron app alias.
 - HTTP file upload (XEP-0363), message archive (MAM), carbons, stream management,
   push notifications (XEP-0357), BOSH and WebSocket.
-- Prosody **13.0.6** pinned from the official Prosody apt repository (stable, not nightly),
+- Prosody **13.0.7** pinned from the official Prosody apt repository (stable, not nightly),
   SQLite storage in Cloudron's backed-up data volume.
 
 ## Installing

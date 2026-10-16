@@ -1,3 +1,8 @@
+[1.0.1]
+
+- Base image cloudron/base 5.0.0 to 6.0.0 (Ubuntu 26.04). Prosody still comes from the official Prosody apt repository (Ubuntu 26.04 carries only 13.0.4), now its resolute suite; Lua stays 5.4.
+- Prosody 13.0.6 to 13.0.7: bug fixes only, no security items. Fixes memory leaks in the network layer, a BSD problem, and adds the tls_profile_version option (default unchanged at 5.7).
+
 [1.0.0]
 
 - Initial release: Prosody 13.0.6 (official stable apt package) for Cloudron.
