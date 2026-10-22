@@ -5,7 +5,7 @@
   "description": "file://DESCRIPTION.md",
   "changelog": "file://CHANGELOG.md",
   "tagline": "Self-hosted chat and calls over XMPP",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "upstreamVersion": "13.0.7",
   "manifestVersion": 2,
   "minBoxVersion": "9.1.0",

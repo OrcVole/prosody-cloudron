@@ -4,13 +4,13 @@
 # Debian FHS paths, Lua 5.4 (re-verified on base 6), CMD-only (no ENTRYPOINT), simple-JID + Cloudron
 # tls/ldap/turn addons.
 
-FROM docker.io/cloudron/base:6.0.0@sha256:9bed4c8fa880645f8e669041ee28febe941481d00e9445e3e5a5483cb541d09b
+FROM docker.io/cloudron/base:6.0.1@sha256:7b1e729960c3ca312d26e886917ba89483241bba0219ff292858e10d9d5768ee
 
 # Prosody STABLE point release, pinned exactly. The `prosody` package is the
 # stable line (currently 13.0.7); the `prosody-13.0` package is *nightly* builds
 # of the 13.0 branch, which we deliberately avoid. Bump this pin to move versions.
 ARG PROSODY_VERSION=13.0.7-1~resolute2
-# Distro codename of the base image above (cloudron/base:6.0.0 = Ubuntu 26.04 resolute).
+# Distro codename of the base image above (cloudron/base:6.0.1 = Ubuntu 26.04 resolute).
 ARG DISTRO=resolute
 
 LABEL org.opencontainers.image.title="prosody-cloudron"

@@ -1,3 +1,7 @@
+[1.0.2]
+
+- Base image cloudron/base 6.0.0 to 6.0.1: Ubuntu security updates, including the removal of the compromised eMudhra emSign ECC Root CA - G3 from the trusted certificates.
+
 [1.0.1]
 
 - Base image cloudron/base 5.0.0 to 6.0.0 (Ubuntu 26.04). Prosody still comes from the official Prosody apt repository (Ubuntu 26.04 carries only 13.0.4), now its resolute suite; Lua stays 5.4.
